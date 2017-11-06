@@ -12,13 +12,6 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'modules' => [
-//        'user' => [
-//            'class' => 'dektrium\user\Module',
-//            'enableUnconfirmedLogin' => true,
-//            'confirmWithin' => 21600,
-//            'cost' => 12,
-//            'admins' => ['admin']
-//        ],
     ],
     'components' => [
         'request' => [
@@ -53,16 +46,6 @@ return [
                     'clientId' => '1849923741937329',
                     'clientSecret' => '27d46925639fece777a3cc019937d9d1',
                 ],
-//                'google' => [
-//                    'class' => 'yii\authclient\clients\GoogleOAuth',
-//                    'clientId' => 'google_client_id',
-//                    'clientSecret' => 'google_client_secret',
-//                ],
-//                'twitter' => [
-//                    'class' => 'yii\authclient\clients\Twitter',
-//                    'consumerKey' => 'twitter_consumer_key',
-//                    'consumerSecret' => 'twitter_consumer_secret',
-//                ],
             ],
         ],
 
