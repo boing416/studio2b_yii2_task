@@ -1,0 +1,30 @@
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+<IfModule mod_headers.c>
+   Header set Access-Control-Allow-Origin "*"
+ </IfModule>
+
+
+# Если запрос начинается с /admin, то заменяем на /backend/web/
+RewriteCond %{REQUEST_URI} ^/admin
+RewriteRule ^admin\/?(.*) /backend/web/$1
+
+# Добавляем другой запрос /frontend/web/$1
+RewriteCond %{REQUEST_URI} !^/(frontend/web|backend/web|admin)
+RewriteRule (.*) /frontend/web/$1
+
+#RewriteCond %{HTTPS} off
+#RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,NE,R=301]
+
+# Если frontend запрос
+RewriteCond %{REQUEST_URI} ^/frontend/web
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /frontend/web/index.php
+
+# Если backend запрос
+RewriteCond %{REQUEST_URI} ^/backend/web
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /backend/web/index.php
